@@ -108,12 +108,12 @@ class KuroukaiBot {
   async stop() {
     try {
       logger.info('Stopping KuroukaiBot...');
-      
+
       if (this.client) {
         await this.client.destroy();
         this.client = null;
       }
-      
+
       logger.info('Bot stopped successfully');
     } catch (error) {
       logger.error('Error stopping bot', error);
@@ -124,7 +124,10 @@ class KuroukaiBot {
 // Start the bot if this file is run directly
 if (require.main === module) {
   const bot = new KuroukaiBot();
-  bot.start();
+  bot.start().catch(error => {
+    console.error('Failed to start bot:', error);
+    process.exit(1);
+  });
 }
 
 module.exports = KuroukaiBot;
