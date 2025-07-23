@@ -1,26 +1,38 @@
 {
-  "name": "wavesbot",
+  "name": "kuroukaibot",
   "version": "1.0.0",
-  "description": "",
+  "description": "A modular Discord bot for server rules and role management",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "dev": "NODE_ENV=development node index.js",
+    "check": "node scripts/dev-check.js",
+    "health": "node scripts/health-check.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Stezsz/WavesBot.git"
+    "url": "git+https://github.com/Kuroukai/KuroukaiBot.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "discord",
+    "bot",
+    "rules",
+    "modular",
+    "nodejs"
+  ],
+  "author": "Kuroukai",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/Stezsz/WavesBot/issues"
+    "url": "https://github.com/Kuroukai/KuroukaiBot/issues"
   },
-  "homepage": "https://github.com/Stezsz/WavesBot#readme",
+  "homepage": "https://github.com/Kuroukai/KuroukaiBot#readme",
   "dependencies": {
     "discord.js": "^14.21.0",
     "dotenv": "^17.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
