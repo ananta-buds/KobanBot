@@ -9,9 +9,8 @@ const messages = {
 1.4. No advertisements, scam/suspicious links, and pay-per-click links. Also we're not allowing distribution of illegal/pirated/cracked/etc. software of any kind.
 1.4.1. Self-advertisements are generally not allowed, but if you're an artist/musician/etc. you can do self-advertisement within the bounds of decency (no spam and begging obviously).
 1.5. No fights between servers.
-1.6. Do not beg for free PERTAMAX keys.
-1.7. Reselling your Sponsor account and PERTAMAX keys are not allowed. If you get caught doing this, we're immediately banning original owner and sold account, or banning the owner and blocking the key.
-1.8. Don't use Support Chats to chit-chat. These channels should be for support only.
+1.6. Do not beg for free keys.
+1.7. Don't use Support Chats to chit-chat. These channels should be for support only.
 
 # Member Protection Rules
 
