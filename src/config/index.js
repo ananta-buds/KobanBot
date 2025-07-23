@@ -3,7 +3,17 @@ const ValidationUtils = require('../utils/validation');
 
 /**
  * Configuration manager for the Discord bot
- * Validates and provides access to environment variables
+ * 
+ * This class handles all environment variables and provides:
+ * - Validation of required environment variables
+ * - Type checking for Discord IDs and tokens
+ * - Centralized access to configuration values
+ * - Environment-specific settings
+ * 
+ * Security features:
+ * - Validates Discord token format
+ * - Validates Discord snowflake IDs (channel/role IDs)
+ * - Throws descriptive errors for missing or invalid configuration
  */
 class Config {
   constructor() {

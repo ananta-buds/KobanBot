@@ -82,6 +82,20 @@ npm run dev
 npm start
 ```
 
+### Development Tools
+
+#### Configuration Check
+Verify your setup and configuration:
+```bash
+npm run check
+```
+
+#### Health Check
+Check if the bot can connect to Discord (useful for monitoring):
+```bash
+npm run health
+```
+
 ## Project Structure
 
 ### Core Components
