@@ -1,5 +1,3 @@
-# KuroukaiBot Copilot Instructions
-
 ## Architecture Overview
 This is a **modular Discord bot** built with Discord.js v14 for rules management and role assignment. The codebase follows a strict separation of concerns:
 

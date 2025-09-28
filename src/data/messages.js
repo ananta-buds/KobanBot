@@ -35,7 +35,7 @@ const messages = {
 
 **What you can do as a regular rule obedient member?**
 * If you see a member that's not following the rules or making others uncomfortable - ping/DM a staff member from your chat. It's very recommended to not intervene into conflict with the offender, just patiently wait for a staff member to deal with the situation.
-* If you see a staff member that breaks the rules, makes others uncomfortable and/or doesn't do his job as intended, DM <@346712642536079361> about it.
+* If you see a staff member that breaks the rules, makes others uncomfortable and/or doesn't do his job as intended, DM any <@&1393015367491649588> about it.
 `,
 
   // Adicione outras mensagens aqui conforme necessário

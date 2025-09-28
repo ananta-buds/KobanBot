@@ -1,4 +1,4 @@
-# KuroukaiBot
+# KobanBot
 
 A modular Discord bot designed for server rules management and role assignment. Built with security, modularity, and maintainability in mind.
 
@@ -29,8 +29,8 @@ src/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Kuroukai/KuroukaiBot.git
-   cd KuroukaiBot
+   git clone https://github.com/ananta-buds/KobanBot.git
+   cd KobanBot
    ```
 
 2. **Install dependencies**

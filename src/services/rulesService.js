@@ -37,6 +37,19 @@ class RulesService {
   }
 
   /**
+   * Checks whether a message already contains the accept button
+   * @param {Message} message - Discord message to inspect
+   * @returns {boolean}
+   */
+  messageHasAcceptButton(message) {
+    return Array.isArray(message.components) &&
+      message.components.some(row =>
+        Array.isArray(row.components) &&
+        row.components.some(component => component.customId === config.acceptButtonId)
+      );
+  }
+
+  /**
    * Checks if a rules message already exists in the channel
    * @param {TextChannel} channel - The channel to check
    * @returns {Promise<Message|null>} Existing message or null
@@ -67,7 +80,7 @@ class RulesService {
   async sendRulesMessage(channelId, rulesText) {
     try {
       const channel = await DiscordUtils.fetchChannel(this.client, channelId);
-      
+
       if (!channel) {
         throw new Error(`Channel not found: ${channelId}`);
       }
@@ -78,19 +91,36 @@ class RulesService {
         throw new Error('Bot missing required permissions in channel');
       }
 
+      const embed = this.createRulesEmbed(rulesText);
+      const button = this.createAcceptButton();
+
       // Check if rules message already exists
       const existingMessage = await this.findExistingRulesMessage(channel);
-      
+
       if (existingMessage) {
-        logger.info('Rules message already exists, skipping send', {
+        const currentDescription = existingMessage.embeds?.[0]?.description ?? '';
+        const hasAcceptButton = this.messageHasAcceptButton(existingMessage);
+
+        if (currentDescription !== rulesText || !hasAcceptButton) {
+          const updatedMessage = await existingMessage.edit({
+            embeds: [embed],
+            components: [button],
+          });
+
+          logger.info('Rules message updated to reflect latest content', {
+            channelId: channel.id,
+            messageId: updatedMessage.id,
+          });
+
+          return updatedMessage;
+        }
+
+        logger.info('Rules message already exists and is up to date, skipping send', {
           channelId: channel.id,
           messageId: existingMessage.id
         });
         return existingMessage;
       }
-
-      const embed = this.createRulesEmbed(rulesText);
-      const button = this.createAcceptButton();
 
       const message = await channel.send({
         embeds: [embed],
@@ -125,33 +155,33 @@ class RulesService {
 
       if (!role) {
         logger.error('Role not found', { roleId: config.roleComerID });
-        await interaction.followUp({ 
-          content: '❌ Error: Role not found.', 
-          ephemeral: true 
+        await interaction.followUp({
+          content: '❌ Error: Role not found.',
+          ephemeral: true
         });
         return;
       }
 
       // Check if user already has the role
       if (DiscordUtils.memberHasRole(interaction.member, role.id)) {
-        await interaction.followUp({ 
-          content: '✅ You already have the required role.', 
-          ephemeral: true 
+        await interaction.followUp({
+          content: '✅ You already have the required role.',
+          ephemeral: true
         });
         return;
       }
 
       const success = await DiscordUtils.addRoleToMember(interaction.member, role);
-      
+
       if (success) {
-        await interaction.followUp({ 
-          content: '✅ Rules accepted! Welcome to the server.', 
-          ephemeral: true 
+        await interaction.followUp({
+          content: '✅ Rules accepted! Welcome to the server.',
+          ephemeral: true
         });
       } else {
-        await interaction.followUp({ 
-          content: '❌ Error: Unable to add role. Please contact an administrator.', 
-          ephemeral: true 
+        await interaction.followUp({
+          content: '❌ Error: Unable to add role. Please contact an administrator.',
+          ephemeral: true
         });
       }
 
@@ -163,9 +193,9 @@ class RulesService {
       });
 
       try {
-        await interaction.followUp({ 
-          content: '❌ Error: Unable to add role. Please contact an administrator.', 
-          ephemeral: true 
+        await interaction.followUp({
+          content: '❌ Error: Unable to add role. Please contact an administrator.',
+          ephemeral: true
         });
       } catch (followUpError) {
         logger.error('Failed to send error follow-up', {

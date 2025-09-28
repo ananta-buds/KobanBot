@@ -1,6 +1,6 @@
-const KuroukaiBot = require('./src/index');
+const KobanBot = require('./src/index');
 
-const bot = new KuroukaiBot();
+const bot = new KobanBot();
 bot.start().catch(error => {
   console.error('Failed to start bot:', error);
   process.exit(1);

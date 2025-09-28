@@ -11,8 +11,8 @@ const config = require('../src/config');
 const logger = require('../src/utils/logger');
 
 async function healthCheck() {
-  console.log('🏥 KuroukaiBot Health Check');
-  
+  console.log('🏥 KobanBot Health Check');
+
   let client;
   try {
     // Create minimal client for health check
@@ -28,13 +28,13 @@ async function healthCheck() {
 
     // Login and check readiness
     await client.login(config.token);
-    
+
     await new Promise((resolve, reject) => {
       client.once('ready', () => {
         clearTimeout(timeout);
         resolve();
       });
-      
+
       client.once('error', (error) => {
         clearTimeout(timeout);
         reject(error);
@@ -44,13 +44,13 @@ async function healthCheck() {
     console.log('✅ Bot is online and healthy');
     console.log(`📋 Bot User: ${client.user.tag}`);
     console.log(`🏠 Servers: ${client.guilds.cache.size}`);
-    
+
     await client.destroy();
     process.exit(0);
-    
+
   } catch (error) {
     console.log('❌ Health check failed:', error.message);
-    
+
     if (client) {
       try {
         await client.destroy();
@@ -58,7 +58,7 @@ async function healthCheck() {
         // Ignore destroy errors
       }
     }
-    
+
     process.exit(1);
   }
 }

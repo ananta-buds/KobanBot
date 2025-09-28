@@ -15,7 +15,7 @@ const config = require('../src/config');
 const logger = require('../src/utils/logger');
 
 async function runDevelopmentChecks() {
-  console.log('🔧 KuroukaiBot Development Checks\n');
+  console.log('🔧 KobanBot Development Checks\n');
 
   // Check 1: Environment Configuration
   console.log('1. Environment Configuration:');
@@ -35,7 +35,7 @@ async function runDevelopmentChecks() {
   console.log('2. File Structure:');
   const requiredFiles = [
     'src/config/index.js',
-    'src/events/ready.js', 
+    'src/events/ready.js',
     'src/events/interactionCreate.js',
     'src/services/rulesService.js',
     'src/utils/logger.js',
@@ -51,7 +51,7 @@ async function runDevelopmentChecks() {
   ];
 
   const missingFiles = requiredFiles.filter(file => !fs.existsSync(file));
-  
+
   if (missingFiles.length === 0) {
     console.log('   ✅ All required files present');
   } else {
@@ -106,14 +106,14 @@ async function runDevelopmentChecks() {
   // Check 5: Logger Test
   console.log('5. Logger Test:');
   logger.info('Test info message');
-  logger.warn('Test warning message'); 
+  logger.warn('Test warning message');
   logger.debug('Test debug message');
   console.log('   ✅ Logger working correctly\n');
 
   console.log('🎉 All development checks passed!');
   console.log('💡 Your bot is ready for development.');
   console.log('🚀 Run "npm start" to start the bot.');
-  
+
   return true;
 }
 

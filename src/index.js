@@ -6,10 +6,10 @@ const { handleReady } = require('./events/ready');
 const { handleInteractionCreate } = require('./events/interactionCreate');
 
 /**
- * KuroukaiBot - Discord Rules Bot
+ * KobanBot - Discord Rules Bot
  * A modular Discord bot for handling server rules and role assignment
  */
-class KuroukaiBot {
+class KobanBot {
   constructor() {
     this.client = null;
     this.setupErrorHandling();
@@ -79,7 +79,7 @@ class KuroukaiBot {
    */
   async start() {
     try {
-      logger.info('Starting KuroukaiBot...', {
+  logger.info('Starting KobanBot...', {
         nodeEnv: config.nodeEnv,
         logLevel: config.logLevel
       });
@@ -107,7 +107,7 @@ class KuroukaiBot {
    */
   async stop() {
     try {
-      logger.info('Stopping KuroukaiBot...');
+  logger.info('Stopping KobanBot...');
 
       if (this.client) {
         await this.client.destroy();
@@ -123,11 +123,11 @@ class KuroukaiBot {
 
 // Start the bot if this file is run directly
 if (require.main === module) {
-  const bot = new KuroukaiBot();
+  const bot = new KobanBot();
   bot.start().catch(error => {
     console.error('Failed to start bot:', error);
     process.exit(1);
   });
 }
 
-module.exports = KuroukaiBot;
+module.exports = KobanBot;

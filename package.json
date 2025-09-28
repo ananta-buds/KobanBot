@@ -1,5 +1,5 @@
 {
-  "name": "kuroukaibot",
+  "name": "koban",
   "version": "1.0.0",
   "description": "A modular Discord bot for server rules and role management",
   "main": "index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kuroukai/KuroukaiBot.git"
+    "url": "git+https://github.com/ananta-buds/KobanBot.git"
   },
   "keywords": [
     "discord",
@@ -21,13 +21,13 @@
     "modular",
     "nodejs"
   ],
-  "author": "Kuroukai",
+  "author": "ananta-buds",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/Kuroukai/KuroukaiBot/issues"
+    "url": "https://github.com/ananta-buds/KobanBot/issues"
   },
-  "homepage": "https://github.com/Kuroukai/KuroukaiBot#readme",
+  "homepage": "https://github.com/ananta-buds/KobanBot#readme",
   "dependencies": {
     "discord.js": "^14.21.0",
     "dotenv": "^17.2.0"
